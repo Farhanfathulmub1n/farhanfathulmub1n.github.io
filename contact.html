@@ -2,15 +2,16 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kontak | Farhan Fathul Mubin</title>
   <meta name="description" content="Website portofolio Farhan Fathul Mubin berisi biodata, proyek, dan sertifikat." />
   <meta name="keywords" content="Farhan Fathul Mubin, portofolio, SMK komputer, proyek IT, sertifikat Dicoding, Haskell" />
   <meta name="author" content="Farhan Fathul Mubin" />
   <meta name="robots" content="index, follow" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+
   <style>
     #popup {
       display: none;
@@ -24,6 +25,10 @@
       z-index: 9999;
       box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
       animation: fadeInOut 3s ease-in-out;
+    }
+
+    #popup.error {
+      background-color: #f44336;
     }
 
     @keyframes fadeInOut {
@@ -68,7 +73,7 @@
           <button type="submit">Kirim</button>
         </form>
 
-        <div id="popup">Pesan berhasil dikirim!</div>
+        <div id="popup"></div>
 
         <h2>Media Sosial</h2>
         <div class="social-icons">
@@ -84,31 +89,44 @@
 
   <!-- Suara notifikasi -->
   <audio id="success-sound" src="sounds/success.mp3" preload="auto"></audio>
+  <audio id="error-sound" src="sounds/error.mp3" preload="auto"></audio>
 
-  <!-- Script kirim dan popup -->
+  <!-- Script kirim form -->
   <script>
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
+    const form = document.getElementById('contact-form');
+    const popup = document.getElementById('popup');
+    const successSound = document.getElementById('success-sound');
+    const errorSound = document.getElementById('error-sound');
+
+    form.addEventListener('submit', function(e) {
       e.preventDefault();
 
       fetch("https://formspree.io/f/xldnkqbz", {
         method: "POST",
-        body: new FormData(this),
+        body: new FormData(form),
         headers: { 'Accept': 'application/json' }
       })
       .then(response => {
         if (response.ok) {
-          this.reset();
-          document.getElementById("popup").style.display = "block";
-          document.getElementById("success-sound").play();
-          setTimeout(() => {
-            document.getElementById("popup").style.display = "none";
-          }, 3000);
+          form.reset();
+          popup.textContent = "Pesan berhasil dikirim!";
+          popup.classList.remove("error");
+          popup.style.display = "block";
+          successSound.play();
         } else {
-          alert("Gagal mengirim pesan. Coba lagi.");
+          throw new Error("Gagal");
         }
       })
       .catch(error => {
-        alert("Terjadi kesalahan koneksi.");
+        popup.textContent = "Gagal mengirim pesan.";
+        popup.classList.add("error");
+        popup.style.display = "block";
+        errorSound.play();
+      })
+      .finally(() => {
+        setTimeout(() => {
+          popup.style.display = "none";
+        }, 3000);
       });
     });
   </script>
