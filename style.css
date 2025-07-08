@@ -118,3 +118,56 @@ button {
   padding: 20px;
   margin-bottom: 20px;
 }
+/* Efek transisi umum */
+a, button, input, textarea, img {
+  transition: all 0.3s ease;
+}
+
+/* Hover link dan tombol */
+a:hover, button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Efek hover pada ikon sosmed */
+.social-icons img:hover {
+  transform: scale(1.2);
+  filter: brightness(1.2);
+}
+
+/* Fade-in animasi konten */
+.content-box {
+  animation: fadeIn 1s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+/* Responsif untuk layar kecil */
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .content-box {
+    padding: 1rem;
+  }
+
+  form input, form textarea, form button {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .social-icons {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .social-icons img {
+    margin: 0.5rem;
+  }
+}
