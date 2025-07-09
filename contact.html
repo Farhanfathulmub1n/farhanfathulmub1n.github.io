@@ -45,15 +45,24 @@
   <div class="loader"></div>
 </div>
   <nav>
+  <div class="nav-container">
+    <div class="logo">Portofolio</div>
+
+    <!-- Tombol dark/light mode -->
     <button id="theme-toggle">🌙</button>
-    <ul>
-      <li><a href="index.html">Beranda</a></li>
+
+    <!-- Hamburger icon -->
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+    <!-- Daftar menu -->
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">Beranda</a></li>
       <li><a href="project.html">Proyek</a></li>
       <li><a href="certificate.html">Sertifikat</a></li>
-      <li><a href="contact.html" class="active">Kontak</a></li>
+      <li><a href="contact.html">Kontak</a></li>
     </ul>
-  </nav>
-
+  </div>
+</nav>
   <div class="container">
     <div class="content-box">
       <header data-aos="fade-down"><h1>Kontak Saya</h1></header>
