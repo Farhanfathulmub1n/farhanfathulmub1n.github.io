@@ -39,10 +39,14 @@
       <header>
         <img src="farhan.jpg" alt="Foto Farhan Fathul Mubin" class="profile-img floating" data-aos="zoom-in" />
         <h1 id="easter-trigger" data-aos="fade-up">Farhan Fathul Mubin</h1>
-        <div id="easter-egg" style="display: none;" data-aos="zoom-in">
-    <p>🎉 Selamat Untuk Kamu yang Menemukan Easter Egg Ini, SEMOGA SUKSES! 😄</p>
-    <img src="icons/egg.png" alt="Easter Egg" style="width: 100px; margin-top: 10px;">
+        <div id="easterModal" class="easter-modal">
+  <div class="easter-modal-content">
+    <span class="close-easter">&times;</span>
+    <h2>🎉 Kamu menemukan rahasia tersembunyi!</h2>
+    <img src="icons/egg.png" alt="Easter Egg" style="width: 120px;" />
+    <p>Terima kasih sudah penasaran! 😄</p>
   </div>
+</div>
         <p data-aos="fade-up">Siswa SMK Informatika Komputer Ampana Kota | Web & Tech Enthusiast</p>
       </header>
       <section data-aos="fade-right">
@@ -115,6 +119,31 @@
     if (clickCount === 5) {
       egg.style.display = "block";
       clickCount = 0; 
+    }
+  });
+</script>
+<script>
+  let clickCount = 0;
+  const trigger = document.getElementById('easter-trigger');
+  const modal = document.getElementById('easterModal');
+  const closeBtn = document.querySelector('.close-easter');
+
+  trigger.addEventListener('click', () => {
+    clickCount++;
+    if (clickCount === 5) {
+      modal.style.display = 'block';
+    }
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+    clickCount = 0;
+  });
+
+  window.addEventListener('click', function(e) {
+    if (e.target == modal) {
+      modal.style.display = 'none';
+      clickCount = 0;
     }
   });
 </script>
