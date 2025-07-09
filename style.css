@@ -335,3 +335,36 @@ a:hover, button:hover {
     transform: translateY(-10px);
   }
 }
+/* Easter Egg Styling */
+#easter-egg {
+  display: none;
+  text-align: center;
+  margin-top: 20px;
+  animation: fadeInScale 0.6s ease forwards;
+  transform: scale(0.8);
+  opacity: 0;
+}
+
+/* Gambar Easter Egg */
+#easter-egg img {
+  width: 120px;
+  transition: transform 0.3s ease;
+}
+#easter-egg img:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Efek saat muncul */
+@keyframes fadeInScale {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsif di HP */
+@media (max-width: 600px) {
+  #easter-egg img {
+    width: 80px;
+  }
+}
