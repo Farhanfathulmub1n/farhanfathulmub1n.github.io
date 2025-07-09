@@ -38,7 +38,11 @@
     <div class="content-box">
       <header>
         <img src="farhan.jpg" alt="Foto Farhan Fathul Mubin" class="profile-img floating" data-aos="zoom-in" />
-        <h1 data-aos="fade-up">Farhan Fathul Mubin</h1>
+        <h1 id="easter-trigger" data-aos="fade-up">Farhan Fathul Mubin</h1>
+        <div id="easter-egg" style="display: none;" data-aos="zoom-in">
+    <p>🎉 Selamat Untuk Kamu yang Menemukan Easter Egg Ini, SEMOGA SUKSES! 😄</p>
+    <img src="icons/egg.png" alt="Easter Egg" style="width: 100px; margin-top: 10px;">
+  </div>
         <p data-aos="fade-up">Siswa SMK Informatika Komputer Ampana Kota | Web & Tech Enthusiast</p>
       </header>
       <section data-aos="fade-right">
@@ -99,6 +103,21 @@
 </script>
 </body>
 </html>
+<script>
+  const trigger = document.getElementById("easter-trigger");
+  const egg = document.getElementById("easter-egg");
+
+  let clickCount = 0;
+
+  trigger.addEventListener("click", function () {
+    clickCount++;
+
+    if (clickCount === 5) {
+      egg.style.display = "block";
+      clickCount = 0; 
+    }
+  });
+</script>
 
 </body>
 </html>
