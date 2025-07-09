@@ -144,6 +144,13 @@ nav {
   animation: fadeIn 1s ease forwards;
   opacity: 0;
 }
+body {
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+.content-box, nav, footer {
+  transition: background 0.5s ease, color 0.5s ease, border 0.5s ease;
+}
 
 @keyframes fadeIn {
   to { opacity: 1; }
