@@ -202,3 +202,57 @@ body.dark-mode nav {
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
+.certificate-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.thumb {
+  cursor: pointer;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid #ffd369;
+  border-radius: 15px;
+  padding: 10px;
+  width: 250px;
+  transition: transform 0.3s ease;
+}
+.thumb img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.thumb:hover {
+  transform: scale(1.05);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 99999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.8);
+}
+.modal-content {
+  background-color: #1a1a2e;
+  margin: 5% auto;
+  padding: 20px;
+  border: 2px solid #ffd369;
+  width: 80%;
+  border-radius: 10px;
+}
+.close-btn {
+  color: #fff;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.close-btn:hover {
+  color: #ffd369;
+}
